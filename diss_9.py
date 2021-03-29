@@ -6,7 +6,15 @@ import unittest
 # Task 1: Get the URL that links to the Pokemon Charmander's webpage.
 # HINT: You will have to add https://pokemondb.net to the URL retrieved using BeautifulSoup
 def getCharmanderLink(soup):
-    pass
+    url = 'https://pokemondb.net/pokedex/charmander'
+    response = requests.get(url)
+    data = response.text
+    soup = BeautifulSoup(data, 'html.parser')
+    tags = soup.find_all('a')
+    for tag in tags:
+        print(tag.get('href'))
+
+    
 
 # Task 2: Get the details from the box below "Egg moves". Get all the move names and store
 #         them into a list. The function should return that list of moves.
@@ -33,7 +41,6 @@ def findLetters(sentences):
 
 
     #return the list of the last letter of all words that begin or end with a capital letter
-
 
 
 def main():
